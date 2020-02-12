@@ -8,6 +8,7 @@ public class PlayerInventoryController : MonoBehaviour
 	public float maxGrabDistance = 3.0f;
 
 	private Inventory inventory;
+	public int selectedIndex = 0;
 
 	void Awake()
 	{
@@ -68,6 +69,12 @@ public class PlayerInventoryController : MonoBehaviour
 						}
 					}
 				}
+			}
+			else
+			{
+				// if not interacting with world item:
+
+				
 			}
 		}
 	}
