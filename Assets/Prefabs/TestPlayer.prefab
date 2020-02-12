@@ -214,6 +214,8 @@ GameObject:
   - component: {fileID: 5632294343193189181}
   - component: {fileID: 5632294343193189180}
   - component: {fileID: 5632294343193189170}
+  - component: {fileID: 699500182636503455}
+  - component: {fileID: 8944148391907696132}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -277,6 +279,55 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &699500182636503455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5632294343193189183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b06ebc1e1ed184aba6107119beb60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hotbarSlots:
+  - m_type: {fileID: 0}
+    m_amount: 0
+  - m_type: {fileID: 0}
+    m_amount: 0
+  - m_type: {fileID: 0}
+    m_amount: 0
+  - m_type: {fileID: 0}
+    m_amount: 0
+  - m_type: {fileID: 0}
+    m_amount: 0
+  - m_type: {fileID: 0}
+    m_amount: 0
+  - m_type: {fileID: 0}
+    m_amount: 0
+  - m_type: {fileID: 0}
+    m_amount: 0
+  - m_type: {fileID: 0}
+    m_amount: 0
+  - m_type: {fileID: 0}
+    m_amount: 0
+--- !u!114 &8944148391907696132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5632294343193189183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab6eac49c4b744b92e4ba31d92125d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldItemHitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxGrabDistance: 3
 --- !u!1 &5632294343457636105
 GameObject:
   m_ObjectHideFlags: 0

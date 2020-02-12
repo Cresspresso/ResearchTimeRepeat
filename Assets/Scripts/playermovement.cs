@@ -16,15 +16,42 @@ public class playermovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
 
+    public Transform worldA;
+    public Transform worldB;
+    public bool isInWorldB = false;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
     }
 
+    void MoveBetweenWorlds(Transform from, Transform to)
+	{
+        controller.transform.position = to.TransformPoint(
+            from.InverseTransformPoint(
+                controller.transform.position));
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Fire2"))
+		{
+            controller.enabled = false;
+            if (isInWorldB)
+            {
+                MoveBetweenWorlds(worldB, worldA);
+                isInWorldB = false;
+            }
+			else
+            {
+                MoveBetweenWorlds(worldA, worldB);
+                isInWorldB = true;
+            }
+            controller.enabled = true;
+        }
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0.0f)
