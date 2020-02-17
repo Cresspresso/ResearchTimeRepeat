@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class slidingdoor : MonoBehaviour
 {
-    public GameObject door1;
-    public GameObject door2;
-
     public float waitTime = 2.0f;
+
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = gameObject.GetComponent<Animator>();
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -15,26 +19,19 @@ public class slidingdoor : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                door1.SetActive(false);
-                door2.SetActive(false);
+                anim.SetBool("doorOpen", true);
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //if (other.tag == "Player")
-        //{
-        //    door1.SetActive(true);
-        //    door2.SetActive(true);
-        //}
         StartCoroutine(countdown());
     }
 
     IEnumerator countdown()
     { 
         yield return new WaitForSeconds(waitTime);
-        door1.SetActive(true);
-        door2.SetActive(true);
+        anim.SetBool("doorOpen", false);
     }
 }
