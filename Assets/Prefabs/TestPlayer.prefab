@@ -216,9 +216,9 @@ GameObject:
   - component: {fileID: 5632294343193189170}
   - component: {fileID: 699500182636503455}
   - component: {fileID: 8944148391907696132}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc11609c8b0b6bf4487d03e9db941be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHumanControlEnabled: 1
   moveSpeed: 8
   jumpHeight: 3
   gravity: -9.81
@@ -279,6 +280,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
+  worldA: {fileID: 0}
+  worldB: {fileID: 0}
+  isInWorldB: 0
 --- !u!114 &699500182636503455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +332,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxGrabDistance: 3
+  selectedIndex: 0
 --- !u!1 &5632294343457636105
 GameObject:
   m_ObjectHideFlags: 0
