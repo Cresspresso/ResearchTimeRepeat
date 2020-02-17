@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class InteractEventArgs
+{
+	public PlayerHand playerHand;
+}
+
+[RequireComponent(typeof(InteractEventComponent))]
+[DisallowMultipleComponent]
+public abstract class Interactable : MonoBehaviour
+{
+	public abstract bool IsInteractable(InteractEventArgs eventArgs);
+	protected abstract void OnInteract(InteractEventArgs eventArgs);
+
+	public InteractEventComponent interactEventComponent { get; private set; }
+
+	protected virtual void Awake()
+	{
+		interactEventComponent = GetComponent<InteractEventComponent>();
+	}
+
+	public void Interact(InteractEventArgs eventArgs)
+	{
+		Debug.Assert(IsInteractable(eventArgs), "Interactable is being interacted with in an invalid situation.", this);
+		OnInteract(eventArgs);
+		interactEventComponent.onInteract.Invoke(eventArgs);
+	}
+}
