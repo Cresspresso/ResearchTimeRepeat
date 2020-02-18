@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InteractEventArgs
-{
-	public PlayerHand playerHand;
-}
-
 [RequireComponent(typeof(InteractEventComponent))]
 [DisallowMultipleComponent]
 public abstract class Interactable : MonoBehaviour
 {
 	public abstract bool IsInteractable(InteractEventArgs eventArgs);
-	protected abstract void OnInteract(InteractEventArgs eventArgs);
+	protected virtual void OnInteract(InteractEventArgs eventArgs) { }
 
 	public InteractEventComponent interactEventComponent { get; private set; }
 

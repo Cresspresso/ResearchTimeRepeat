@@ -1,22 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System.Linq;
 
+// sibling to trigger colliders
 public class PlayerHand : MonoBehaviour
 {
 	public LayerMask obstacleMask = ~0;
 	public Transform handLocation;
 	public float lerpSpeed = 5.0f;
 	public float slerpSpeed = 5.0f;
-	public Interactable itemBeingHeld { get; private set; } = null;
 
-	public const string itemLayerName = "KeyCard";
-	public const string itemBeingHeldLayerName = "KeyCardBeingHeld";
+	[SerializeField]
+	private UnityEvent m_onNothingToInteract = new UnityEvent();
+	public UnityEvent onNothingToInteract => m_onNothingToInteract;
 
 	public Transform cameraTransform => Camera.main.transform;
 
 	private Dictionary<Collider, int> availableTouches = new Dictionary<Collider, int>();
+
+#if UNITY_EDITOR
+	private void OnGUI()
+	{
+		GUI.Label(new Rect(10, 10, 200, 60), $"count: {availableTouches.Count}");
+	}
+#endif
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -44,31 +53,32 @@ public class PlayerHand : MonoBehaviour
 
 	// Get item that is closest to where the camera is looking.
 	// Author: Elijah
-	private IEnumerable<Interactable> QueryItems()
+	private IEnumerable<Interactable> QueryInteractables(InteractEventArgs eventArgs)
 	{
 		var cameraTransform = this.cameraTransform;
 		return
 			from pair in availableTouches
 			let collider = pair.Key
-			where collider && collider.transform && collider.tag == itemLayerName
+			where collider && collider.transform
 			let item = collider.GetComponentInParent<Interactable>()
-			where item && item != this.itemBeingHeld
+			where item && item.IsInteractable(eventArgs)
 			let p = collider.transform.position - cameraTransform.position
 			let d = Vector3.Distance(p, Vector3.Project(p, cameraTransform.forward))
 			orderby d
 			select item;
 	}
 
-	private Interactable QueryClosestItem()
+	private Interactable QueryClosestInteractable(InteractEventArgs eventArgs)
 	{
-		return QueryItems().FirstOrDefault();
+		return QueryInteractables(eventArgs).FirstOrDefault();
 	}
 
 	private void Update()
 	{
 		if (Input.GetButtonDown("Fire1"))
 		{
-			var itemInQuestion = QueryClosestItem();
+			var eventArgs = new InteractEventArgs(hand: this);
+			var itemInQuestion = QueryClosestInteractable(eventArgs);
 			if (itemInQuestion)
 			{
 				Debug.Log($"Trying to pick up {itemInQuestion.name}");
@@ -86,11 +96,12 @@ public class PlayerHand : MonoBehaviour
 					var itemOnTop = hit.collider.GetComponentInParent<Interactable>();
 					if (itemOnTop)
 					{
-						InteractWith(itemOnTop);
+						Debug.Log($"Interacting with {itemOnTop.name}", itemOnTop);
+						itemOnTop.Interact(eventArgs);
 					}
 					else
 					{
-						Drop();
+						onNothingToInteract.Invoke();
 
 						Debug.DrawRay(cameraTransform.position, dir, Color.red, 5.0f);
 						Debug.DrawRay(hit.point, Vector3.up, Color.yellow, 5.0f);
@@ -99,43 +110,15 @@ public class PlayerHand : MonoBehaviour
 				}
 				else
 				{
-					InteractWith(itemInQuestion);
+					Debug.Log($"Interacting with {itemInQuestion.name}", itemInQuestion);
+					itemInQuestion.Interact(eventArgs);
 				}
 			}
 			else
 			{
-				Drop();
+				Debug.Log("Nothing to interact with.", this);
+				onNothingToInteract.Invoke();
 			}
 		}
-	}
-
-	// called from non-item maybe-interactable classes
-	public void InteractWith(Interactable item)
-	{
-		Debug.Log($"Interacting with {item.name}");
-
-		item.Interact(new InteractEventArgs { playerHand = this });
-	}
-
-	// called from item classes
-	public void Drop()
-	{
-		if (!itemBeingHeld) { return; }
-		try
-		{
-			itemBeingHeld.gameObject.layer = LayerMask.NameToLayer(itemLayerName);
-		}
-		finally
-		{
-			this.itemBeingHeld = null;
-		}
-	}
-
-	// called from item classes
-	public void PickUp(Interactable item)
-	{
-		Drop();
-		this.itemBeingHeld = item;
-		item.gameObject.layer = LayerMask.NameToLayer(itemBeingHeldLayerName);
 	}
 }

@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public class InteractEventArgs
+{
+	public PlayerHand hand;
+
+	public InteractEventArgs(PlayerHand hand)
+	{
+		this.hand = hand;
+	}
+}
+
 [DisallowMultipleComponent]
 public sealed class InteractEventComponent : MonoBehaviour
 {
