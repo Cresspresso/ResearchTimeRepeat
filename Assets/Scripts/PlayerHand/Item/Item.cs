@@ -5,22 +5,38 @@ using UnityEngine;
 [RequireComponent(typeof(ItemEventComponent))]
 public class Item : Interactable
 {
+	private ItemEventComponent m_itemEventComponent;
+	public ItemEventComponent itemEventComponent {
+		get
+		{
+			if (!m_itemEventComponent)
+			{
+				m_itemEventComponent = GetComponent<ItemEventComponent>();
+			}
+			return m_itemEventComponent;
+		}
+	}
+
 	public string hoverHeldDescription = "Item";
 	private string hoverOldDescription;
 
-	public ItemEventComponent itemEventComponent { get; private set; }
 	public PlayerItemHolder holder { get; private set; } = null;
 
-	protected override void Awake()
+	protected virtual void Awake()
 	{
-		base.Awake();
-		itemEventComponent = GetComponent<ItemEventComponent>();
 		hoverOldDescription = this.hoverNotInteractableDescription;
 	}
 
-	public override bool IsInteractable(InteractEventArgs eventArgs)
+	public override NotInteractableReason GetNotInteractableReason(InteractEventArgs eventArgs)
 	{
-		return !holder;
+		if (holder)
+		{
+			return new NotInteractableReason("item is being held");
+		}
+		else
+		{
+			return base.GetNotInteractableReason(eventArgs);
+		}
 	}
 
 	protected override void OnInteract(InteractEventArgs eventArgs)
