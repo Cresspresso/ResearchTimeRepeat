@@ -7,6 +7,10 @@ using UnityEngine.Events;
 [DisallowMultipleComponent]
 public abstract class Interactable : MonoBehaviour
 {
+	public bool showHoverInfo = true;
+	public string hoverDescription = "Interact";
+	public string hoverNotInteractableDescription = "Can Not Interact";
+
 	public abstract bool IsInteractable(InteractEventArgs eventArgs);
 	protected virtual void OnInteract(InteractEventArgs eventArgs) { }
 

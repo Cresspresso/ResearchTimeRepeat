@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(ItemEventComponent))]
 public class Item : Interactable
 {
+	public string hoverHeldDescription = "Item";
+	private string hoverOldDescription;
+
 	public ItemEventComponent itemEventComponent { get; private set; }
 	public PlayerItemHolder holder { get; private set; } = null;
 
@@ -12,6 +15,7 @@ public class Item : Interactable
 	{
 		base.Awake();
 		itemEventComponent = GetComponent<ItemEventComponent>();
+		hoverOldDescription = this.hoverNotInteractableDescription;
 	}
 
 	public override bool IsInteractable(InteractEventArgs eventArgs)
@@ -44,6 +48,7 @@ public class Item : Interactable
 	public void InvokePickedUp(ItemEventArgs eventArgs)
 	{
 		holder = eventArgs.holder;
+		hoverNotInteractableDescription = hoverHeldDescription;
 		OnPickedUp(eventArgs);
 		itemEventComponent.onPickedUp.Invoke(eventArgs);
 	}
@@ -51,6 +56,7 @@ public class Item : Interactable
 	public void InvokeDropped(ItemEventArgs eventArgs)
 	{
 		holder = null;
+		hoverNotInteractableDescription = hoverOldDescription;
 		OnDropped(eventArgs);
 		itemEventComponent.onDropped.Invoke(eventArgs);
 	}

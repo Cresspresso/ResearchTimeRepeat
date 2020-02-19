@@ -8,7 +8,11 @@ public sealed class KeyCardReader : Interactable
 	public override bool IsInteractable(InteractEventArgs eventArgs)
 	{
 		var holder = eventArgs.hand.GetComponent<PlayerItemHolder>();
-		var keyCard = holder.itemBeingHeld.GetComponent<KeyCard>();
+
+		var item = holder.itemBeingHeld;
+		if (!item) { return false; }
+
+		var keyCard = item.GetComponent<KeyCard>();
 		return (bool)keyCard;
 	}
 }

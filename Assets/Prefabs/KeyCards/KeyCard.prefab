@@ -125,6 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb585cf89abb2d488e3a4b76e075c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showHoverInfo: 1
+  hoverDescription: Key Card
+  hoverNotInteractableDescription: Key Card (Stuck)
+  hoverHeldDescription: Key Card
 --- !u!114 &3891890529052552910
 MonoBehaviour:
   m_ObjectHideFlags: 0
