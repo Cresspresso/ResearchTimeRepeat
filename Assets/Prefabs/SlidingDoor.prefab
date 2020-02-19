@@ -200,7 +200,6 @@ GameObject:
   - component: {fileID: 8427232552631795926}
   - component: {fileID: 3569454091254097446}
   - component: {fileID: 3569454091254097451}
-  - component: {fileID: 3569454091254097444}
   m_Layer: 0
   m_Name: SlidingDoor
   m_TagString: Untagged
@@ -257,19 +256,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3569454091254097444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4803320465301762757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e57d01c609b41ad42a22a6a2ef964c39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitTime: 2
 --- !u!1 &7786283134036176892
 GameObject:
   m_ObjectHideFlags: 0
