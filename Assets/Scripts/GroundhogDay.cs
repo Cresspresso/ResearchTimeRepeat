@@ -32,13 +32,23 @@ public class GroundhogDay : MonoBehaviour
 		m_elapsedTime = -startDelay;
 	}
 
+	public void RestartTimeLoop()
+	{
+		isLoadingScene = true;
+		m_elapsedTime = duration + timeLoopRestartDelay;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		Debug.Log("Groundhog Day is Restarting.");
+	}
+
 	private void LateUpdate()
 	{
-		m_elapsedTime += Time.deltaTime;
 		if (!isLoadingScene && m_elapsedTime >= duration + timeLoopRestartDelay)
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-			Debug.Log("Groundhog Day is Restarting.");
+			RestartTimeLoop();
+		}
+		else
+		{
+			m_elapsedTime += Time.deltaTime;
 		}
 	}
 }
