@@ -13,6 +13,10 @@ public class GroundhogKcr : MonoBehaviour
 	{
 		interactable = GetComponent<KeyCardReader>();
 
+		if (!groundhogDay)
+		{
+			groundhogDay = FindObjectOfType<GroundhogDay>();
+		}
 		Debug.Assert(groundhogDay, "groundhogDay is null", this);
 
 		interactable.interactEventComponent.onInteract.AddListener(OnInteract);

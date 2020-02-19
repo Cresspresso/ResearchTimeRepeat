@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PlayerStartUnlock : MonoBehaviour
 {
-	public playermovement playerMovement;
+	public PlayerController player;
 	public GroundhogDay groundhogDay;
 
 	private void Start()
 	{
-		playerMovement.isHumanControlEnabled = false;
+		player.isGameControlEnabled = false;
 	}
 
 	private void Update()
 	{
 		if (groundhogDay.elapsedTime > 0.0f)
 		{
-			playerMovement.isHumanControlEnabled = true;
+			player.isGameControlEnabled = true;
 			Destroy(this);
 		}
 	}
