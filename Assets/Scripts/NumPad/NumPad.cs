@@ -8,6 +8,7 @@ using System.Text;
 public class NumPad : MonoBehaviour
 {
 	public int maxLength = 4;
+	public bool submitAtMaxLength = true;
 
 	private StringBuilder stringBuilder = new StringBuilder();
 	public string code { get; private set; }
@@ -41,12 +42,16 @@ public class NumPad : MonoBehaviour
 		onCodeChanged.Invoke(code);
 	}
 
+	private void Submit()
+	{
+		onSubmit.Invoke(code);
+	}
+
 	public void OnNumPadKeyPressed(NumPadKeyType type)
 	{
 		if (type == NumPadKeyType.Enter)
 		{
-			// submit
-			onSubmit.Invoke(code);
+			Submit();
 		}
 		else if (type == NumPadKeyType.Clear)
 		{
@@ -62,6 +67,11 @@ public class NumPad : MonoBehaviour
 			{
 				stringBuilder.Append(GetChar(type));
 				InvokeCodeChanged();
+
+				if (submitAtMaxLength && stringBuilder.Length == maxLength)
+				{
+					Submit();
+				}
 			}
 		}
 	}
