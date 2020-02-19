@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3891890529052552913}
   - component: {fileID: 3891890529052552911}
   - component: {fileID: 3891890529052552914}
-  - component: {fileID: 3891890529052552908}
   - component: {fileID: 3891890529052552909}
+  - component: {fileID: 3891890529052552908}
   - component: {fileID: 3891890529052552907}
   - component: {fileID: 3891890529052552910}
   m_Layer: 9
@@ -80,6 +80,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.27236938, y: 0.18015605, z: 0.02758789}
   m_Center: {x: -0.00093078613, y: -0.00097349286, z: -0.00045776367}
+--- !u!114 &3891890529052552909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891890529052552915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a68deb70f4915f40a9d6070ef147f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3891890529052552908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,21 +111,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_onPickedUp:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3891890529052552909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3891890529052552915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a68deb70f4915f40a9d6070ef147f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_onInteract:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3891890529052552907
