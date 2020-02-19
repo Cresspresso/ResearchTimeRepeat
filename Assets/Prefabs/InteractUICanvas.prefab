@@ -138,11 +138,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 72
+    m_Font: {fileID: 12800000, guid: 20c531a60de05e746af07a9b618482bd, type: 3}
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &8594219105794116036
 GameObject:
@@ -332,11 +332,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 72
+    m_Font: {fileID: 12800000, guid: 20c531a60de05e746af07a9b618482bd, type: 3}
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &8594219106300341015
 GameObject:
@@ -413,7 +413,7 @@ MonoBehaviour:
   onlyIfInteractable: 1
   visuals: {fileID: 8594219106239162639}
   textElements:
-  - {fileID: 0}
+  - {fileID: 8594219106239162625}
 --- !u!1 &8877406723470481931
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,4 +467,4 @@ MonoBehaviour:
   onlyIfInteractable: 0
   visuals: {fileID: 5932476186822434737}
   textElements:
-  - {fileID: 0}
+  - {fileID: 8154906144114370636}

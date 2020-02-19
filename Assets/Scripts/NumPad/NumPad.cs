@@ -9,6 +9,7 @@ public class NumPad : MonoBehaviour
 {
 	public int maxLength = 4;
 	public bool submitAtMaxLength = true;
+	public bool clearAfterMaxLength = true;
 
 	private StringBuilder stringBuilder = new StringBuilder();
 	public string code { get; private set; }
@@ -63,7 +64,12 @@ public class NumPad : MonoBehaviour
 		{
 			// digit numeral
 
-			if (stringBuilder.Length != maxLength)
+			if (clearAfterMaxLength && stringBuilder.Length >= maxLength)
+			{
+				stringBuilder.Clear();
+			}
+
+			if (stringBuilder.Length < maxLength)
 			{
 				stringBuilder.Append(GetChar(type));
 				InvokeCodeChanged();

@@ -6,13 +6,14 @@ using UnityEngine.Events;
 [RequireComponent(typeof(NumPad))]
 public class NumPadLock : MonoBehaviour
 {
+	[SerializeField]
 	private NumPad m_pad;
 	public NumPad pad {
 		get
 		{
 			if (!m_pad)
 			{
-				m_pad = GetComponent<NumPad>();
+				m_pad = GetComponentInParent<NumPad>();
 			}
 			return m_pad;
 		}
