@@ -12,7 +12,7 @@ public class InteractUI : MonoBehaviour
 	public bool onlyIfInteractable = false;
 
 	public GameObject visuals;
-	public Text textElement;
+	public Text[] textElements = new Text[1];
 	private bool m_visible;
 	public bool visible {
 		get => m_visible;
@@ -53,9 +53,28 @@ public class InteractUI : MonoBehaviour
 				visible = true;
 			}
 
-			textElement.text = playerHand.IsInteractable(interactable)
-				? interactable.hoverDescription
-				: interactable.hoverNotInteractableDescription;
+
+			// update text
+
+			var re = playerHand.GetNotInteractableReason(interactable);
+
+			if (textElements != null)
+			{
+				var text = re == null
+					? interactable.hoverDescription
+					: interactable.hoverNotInteractableDescription;
+
+				foreach (var element in textElements)
+				{
+					if (element)
+					{
+						element.text = text;
+					}
+				}
+			}
+
+
+			// update position
 
 			var worldPos = interactable.transform.position;
 			var screenPos = Camera.main.WorldToViewportPoint(worldPos) * canvasScaler.referenceResolution;

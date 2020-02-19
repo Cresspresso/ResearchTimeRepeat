@@ -21,7 +21,7 @@ public class PlayerHand : MonoBehaviour
 	public List<Interactable> interactablesBeingHovered { get; private set; } = new List<Interactable>();
 
 	private InteractEventArgs eventArgs;
-	public bool IsInteractable(Interactable interactable)
+	public NotInteractableReason GetNotInteractableReason(Interactable interactable)
 	{
 		// if no obstacles in the way
 		var cameraTransform = this.cameraTransform;
@@ -36,15 +36,16 @@ public class PlayerHand : MonoBehaviour
 			var objectOnTop = hit.collider.GetComponentInParent<Interactable>();
 			if (objectOnTop != interactable)
 			{
-				return false;
+				var oName = objectOnTop ? objectOnTop.name : hit.collider.name;
+				return new NotInteractableReason("something is in the way: " + oName);
 			}
 		}
 
-		return interactable.IsInteractable(eventArgs);
+		return interactable.GetNotInteractableReason(eventArgs);
 	}
 
 	public Interactable GetClosestHovered() => interactablesBeingHovered.FirstOrDefault();
-	public Interactable GetClosestInteractable() => interactablesBeingHovered.FirstOrDefault(IsInteractable);
+	public Interactable GetClosestInteractable() => interactablesBeingHovered.FirstOrDefault(i => GetNotInteractableReason(i) == null);
 
 
 
@@ -102,6 +103,18 @@ public class PlayerHand : MonoBehaviour
 	private void Update()
 	{
 		interactablesBeingHovered = QueryInteractables().ToList();
+		/*Debug.Log(interactablesBeingHovered.Take(5).Aggregate("", (sum, b) =>
+		{
+			sum += ", ";
+			sum += b.name;
+			var re = GetNotInteractableReason(b);
+			if (re != null)
+			{
+				sum += ":";
+				sum += re.reason;
+			}
+			return sum;
+		}), this);*/
 
 		if (Input.GetButtonDown("Fire1"))
 		{
