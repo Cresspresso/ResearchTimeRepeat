@@ -17,10 +17,10 @@ TagManager:
   - PostProcessing
   - KeyCard
   - Ground
-  - SwipePanel
+  - KeyCardReader
   - PlayerHand
   - KeyCardBeingHeld
-  - 
+  - Player
   - 
   - 
   - 

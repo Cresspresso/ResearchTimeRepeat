@@ -34,6 +34,7 @@ public class GroundhogDay : MonoBehaviour
 
 	public void RestartTimeLoop()
 	{
+		isLoadingScene = true;
 		m_elapsedTime = duration + timeLoopRestartDelay;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		Debug.Log("Groundhog Day is Restarting.");
