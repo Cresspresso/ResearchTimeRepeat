@@ -9,8 +9,6 @@ public class PlayerHand : MonoBehaviour
 {
 	public LayerMask obstacleMask = ~0;
 	public Transform handLocation;
-	public float lerpSpeed = 5.0f;
-	public float slerpSpeed = 5.0f;
 
 	[SerializeField]
 	private UnityEvent m_onNothingToInteract = new UnityEvent();
@@ -19,13 +17,6 @@ public class PlayerHand : MonoBehaviour
 	public Transform cameraTransform => Camera.main.transform;
 
 	private Dictionary<Collider, int> availableTouches = new Dictionary<Collider, int>();
-
-#if UNITY_EDITOR
-	private void OnGUI()
-	{
-		GUI.Label(new Rect(10, 10, 200, 60), $"count: {availableTouches.Count}");
-	}
-#endif
 
 	private void OnTriggerEnter(Collider other)
 	{

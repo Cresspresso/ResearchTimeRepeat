@@ -8,6 +8,15 @@ public class ClockTicker : MonoBehaviour
 	public GroundhogDay groundhogDay;
 	public Text clockText;
 
+	private void Awake()
+	{
+		if (!groundhogDay)
+		{
+			groundhogDay = FindObjectOfType<GroundhogDay>();
+		}
+		Debug.Assert(groundhogDay, "groundhogDay is null", this);
+	}
+
 	private void Update()
 	{
 		 clockText.text = string.Format("{0:00.00}", groundhogDay.remainingTime);
