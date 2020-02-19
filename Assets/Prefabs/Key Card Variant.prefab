@@ -7,6 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8931381873987662168, guid: fe795504a24c0d941ad5ca14da15872a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7517174016933706125, guid: fe795504a24c0d941ad5ca14da15872a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4971620295326971715, guid: fe795504a24c0d941ad5ca14da15872a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -70,7 +80,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: fe795504a24c0d941ad5ca14da15872a,
         type: 3}
       propertyPath: m_Name
-      value: Key Card
+      value: Key Card Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5600756518617014941, guid: fe795504a24c0d941ad5ca14da15872a,
         type: 3}

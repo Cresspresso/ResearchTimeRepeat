@@ -81,7 +81,7 @@ public class PlayerHand : MonoBehaviour
 			var itemInQuestion = QueryClosestInteractable(eventArgs);
 			if (itemInQuestion)
 			{
-				Debug.Log($"Trying to pick up {itemInQuestion.name}");
+				//Debug.Log($"Trying to pick up {itemInQuestion.name}");
 
 				// if no obstacles in the way
 				var cameraTransform = this.cameraTransform;
@@ -96,27 +96,27 @@ public class PlayerHand : MonoBehaviour
 					var itemOnTop = hit.collider.GetComponentInParent<Interactable>();
 					if (itemOnTop)
 					{
-						Debug.Log($"Interacting with {itemOnTop.name}", itemOnTop);
+						//Debug.Log($"Interacting with {itemOnTop.name}", itemOnTop);
 						itemOnTop.Interact(eventArgs);
 					}
 					else
 					{
 						onNothingToInteract.Invoke();
 
-						Debug.DrawRay(cameraTransform.position, dir, Color.red, 5.0f);
-						Debug.DrawRay(hit.point, Vector3.up, Color.yellow, 5.0f);
-						Debug.Log($"Obstacle in the way: {hit.collider.name} {hit.distance} vs {dir.magnitude}", hit.collider);
+						//Debug.DrawRay(cameraTransform.position, dir, Color.red, 5.0f);
+						//Debug.DrawRay(hit.point, Vector3.up, Color.yellow, 5.0f);
+						//Debug.Log($"Obstacle in the way: {hit.collider.name} {hit.distance} vs {dir.magnitude}", hit.collider);
 					}
 				}
 				else
 				{
-					Debug.Log($"Interacting with {itemInQuestion.name}", itemInQuestion);
+					//Debug.Log($"Interacting with {itemInQuestion.name}", itemInQuestion);
 					itemInQuestion.Interact(eventArgs);
 				}
 			}
 			else
 			{
-				Debug.Log("Nothing to interact with.", this);
+				//Debug.Log("Nothing to interact with.", this);
 				onNothingToInteract.Invoke();
 			}
 		}

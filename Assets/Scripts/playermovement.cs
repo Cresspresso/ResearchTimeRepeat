@@ -2,46 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(CharacterController))]
 public class playermovement : MonoBehaviour
 {
-	public bool isHumanControlEnabled = true;
+	public PlayerController player { get; private set; }
+	public CharacterController controller { get; private set; }
 
-    public float moveSpeed = 8.0f;
+	public float moveSpeed = 8.0f;
     public float jumpHeight = 3.0f;
     public float gravity = -9.81f;
     public float groundDistance = 0.4f;
 
-    public CharacterController controller;
     public Transform groundCheck;
     public LayerMask groundMask;
 
     private Vector3 velocity;
     private bool isGrounded;
 
-    public Transform worldA;
-    public Transform worldB;
-    public bool isInWorldB = false;
+	private void Awake()
+	{
+		player = GetComponent<PlayerController>();
+		controller = GetComponent<CharacterController>();
+	}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        controller = gameObject.GetComponent<CharacterController>();
-    }
-
-    void MoveBetweenWorlds(Transform from, Transform to)
+#if WORLDS
+	void MoveBetweenWorlds(Transform from, Transform to)
 	{
         controller.transform.position = to.TransformPoint(
             from.InverseTransformPoint(
                 controller.transform.position));
     }
+#endif // WORLDS
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire2") && isHumanControlEnabled)
+	// Update is called once per frame
+	void Update()
+	{
+#if WORLDS
+        if (Input.GetButtonDown("Fire2") && player.isGameControlEnabled)
 		{
             controller.enabled = false;
-            if (isInWorldB)
+			if (isInWorldB)
             {
                 MoveBetweenWorlds(worldB, worldA);
                 isInWorldB = false;
@@ -53,15 +54,16 @@ public class playermovement : MonoBehaviour
             }
             controller.enabled = true;
         }
+#endif // WORLDS
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0.0f)
         {
             velocity.y = -2.0f;
         }
 
-		if (isHumanControlEnabled)
+		if (player.isGameControlEnabled)
 		{
 			float x = Input.GetAxis("Horizontal");
 			float z = Input.GetAxis("Vertical");

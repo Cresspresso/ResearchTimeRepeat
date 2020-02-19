@@ -7,8 +7,8 @@ public class PlayerItemHolder : MonoBehaviour
 {
 	public Item itemBeingHeld { get; private set; } = null;
 
-	public const string itemLayerName = "KeyCard";
-	public const string itemBeingHeldLayerName = "KeyCardBeingHeld";
+	//public const string itemLayerName = "KeyCard";
+	//public const string itemBeingHeldLayerName = "KeyCardBeingHeld";
 
 	private void Update()
 	{
