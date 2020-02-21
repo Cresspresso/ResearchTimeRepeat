@@ -19,14 +19,14 @@ public class NumPadLock : MonoBehaviour
 		}
 	}
 
+	public string passcode = "1234";
+
 	[SerializeField]
 	private UnityEvent m_onCorrectSubmitted = new UnityEvent();
 	public UnityEvent onCorrectSubmitted => m_onCorrectSubmitted;
 	[SerializeField]
 	private UnityEvent m_onIncorrectSubmitted = new UnityEvent();
 	public UnityEvent onIncorrectSubmitted => m_onIncorrectSubmitted;
-
-	public string passcode = "1234";
 
 	private void Awake()
 	{
