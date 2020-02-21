@@ -5,18 +5,38 @@ using UnityEngine;
 [RequireComponent(typeof(ItemEventComponent))]
 public class Item : Interactable
 {
-	public ItemEventComponent itemEventComponent { get; private set; }
-	public PlayerItemHolder holder { get; private set; } = null;
-
-	protected override void Awake()
-	{
-		base.Awake();
-		itemEventComponent = GetComponent<ItemEventComponent>();
+	private ItemEventComponent m_itemEventComponent;
+	public ItemEventComponent itemEventComponent {
+		get
+		{
+			if (!m_itemEventComponent)
+			{
+				m_itemEventComponent = GetComponent<ItemEventComponent>();
+			}
+			return m_itemEventComponent;
+		}
 	}
 
-	public override bool IsInteractable(InteractEventArgs eventArgs)
+	public string hoverHeldDescription = "Item";
+	private string hoverOldDescription;
+
+	public PlayerItemHolder holder { get; private set; } = null;
+
+	protected virtual void Awake()
 	{
-		return !holder;
+		hoverOldDescription = this.hoverNotInteractableDescription;
+	}
+
+	public override NotInteractableReason GetNotInteractableReason(InteractEventArgs eventArgs)
+	{
+		if (holder)
+		{
+			return new NotInteractableReason("item is being held");
+		}
+		else
+		{
+			return base.GetNotInteractableReason(eventArgs);
+		}
 	}
 
 	protected override void OnInteract(InteractEventArgs eventArgs)
@@ -44,6 +64,7 @@ public class Item : Interactable
 	public void InvokePickedUp(ItemEventArgs eventArgs)
 	{
 		holder = eventArgs.holder;
+		hoverNotInteractableDescription = hoverHeldDescription;
 		OnPickedUp(eventArgs);
 		itemEventComponent.onPickedUp.Invoke(eventArgs);
 	}
@@ -51,6 +72,7 @@ public class Item : Interactable
 	public void InvokeDropped(ItemEventArgs eventArgs)
 	{
 		holder = null;
+		hoverNotInteractableDescription = hoverOldDescription;
 		OnDropped(eventArgs);
 		itemEventComponent.onDropped.Invoke(eventArgs);
 	}

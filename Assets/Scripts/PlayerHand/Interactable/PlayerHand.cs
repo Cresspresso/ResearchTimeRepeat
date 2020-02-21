@@ -18,6 +18,47 @@ public class PlayerHand : MonoBehaviour
 
 	private Dictionary<Collider, int> availableTouches = new Dictionary<Collider, int>();
 
+	public List<Interactable> interactablesBeingHovered { get; private set; } = new List<Interactable>();
+
+	private InteractEventArgs eventArgs;
+	public NotInteractableReason GetNotInteractableReason(Interactable interactable)
+	{
+		// if no obstacles in the way
+		var cameraTransform = this.cameraTransform;
+		var dir = interactable.transform.position - cameraTransform.position;
+		if (Physics.Raycast(
+			new Ray(cameraTransform.position, dir),
+			out var hit,
+			dir.magnitude,
+			obstacleMask,
+			QueryTriggerInteraction.Ignore))
+		{
+			var objectOnTop = hit.collider.GetComponentInParent<Interactable>();
+			if (objectOnTop != interactable)
+			{
+				var oName = objectOnTop ? objectOnTop.name : hit.collider.name;
+				return new NotInteractableReason("something is in the way: " + oName);
+			}
+		}
+
+		return interactable.GetNotInteractableReason(eventArgs);
+	}
+
+	public Interactable GetClosestHovered() => interactablesBeingHovered.FirstOrDefault();
+	public Interactable GetClosestInteractable() => interactablesBeingHovered.FirstOrDefault(i => GetNotInteractableReason(i) == null);
+
+
+
+	private void Awake()
+	{
+		eventArgs = new InteractEventArgs(this);
+	}
+
+	private void OnDestroy()
+	{
+		eventArgs = null;
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if (availableTouches.ContainsKey(other))
@@ -44,7 +85,7 @@ public class PlayerHand : MonoBehaviour
 
 	// Get item that is closest to where the camera is looking.
 	// Author: Elijah
-	private IEnumerable<Interactable> QueryInteractables(InteractEventArgs eventArgs)
+	private IEnumerable<Interactable> QueryInteractables()
 	{
 		var cameraTransform = this.cameraTransform;
 		return
@@ -52,62 +93,38 @@ public class PlayerHand : MonoBehaviour
 			let collider = pair.Key
 			where collider && collider.transform
 			let item = collider.GetComponentInParent<Interactable>()
-			where item && item.IsInteractable(eventArgs)
+			where item
 			let p = collider.transform.position - cameraTransform.position
 			let d = Vector3.Distance(p, Vector3.Project(p, cameraTransform.forward))
 			orderby d
 			select item;
 	}
 
-	private Interactable QueryClosestInteractable(InteractEventArgs eventArgs)
-	{
-		return QueryInteractables(eventArgs).FirstOrDefault();
-	}
-
 	private void Update()
 	{
+		interactablesBeingHovered = QueryInteractables().ToList();
+		/*Debug.Log(interactablesBeingHovered.Take(5).Aggregate("", (sum, b) =>
+		{
+			sum += ", ";
+			sum += b.name;
+			var re = GetNotInteractableReason(b);
+			if (re != null)
+			{
+				sum += ":";
+				sum += re.reason;
+			}
+			return sum;
+		}), this);*/
+
 		if (Input.GetButtonDown("Fire1"))
 		{
-			var eventArgs = new InteractEventArgs(hand: this);
-			var itemInQuestion = QueryClosestInteractable(eventArgs);
-			if (itemInQuestion)
+			var interactable = GetClosestInteractable();
+			if (interactable)
 			{
-				//Debug.Log($"Trying to pick up {itemInQuestion.name}");
-
-				// if no obstacles in the way
-				var cameraTransform = this.cameraTransform;
-				var dir = itemInQuestion.transform.position - cameraTransform.position;
-				if (Physics.Raycast(
-					new Ray(cameraTransform.position, dir),
-					out var hit,
-					dir.magnitude,
-					obstacleMask,
-					QueryTriggerInteraction.Ignore))
-				{
-					var itemOnTop = hit.collider.GetComponentInParent<Interactable>();
-					if (itemOnTop)
-					{
-						//Debug.Log($"Interacting with {itemOnTop.name}", itemOnTop);
-						itemOnTop.Interact(eventArgs);
-					}
-					else
-					{
-						onNothingToInteract.Invoke();
-
-						//Debug.DrawRay(cameraTransform.position, dir, Color.red, 5.0f);
-						//Debug.DrawRay(hit.point, Vector3.up, Color.yellow, 5.0f);
-						//Debug.Log($"Obstacle in the way: {hit.collider.name} {hit.distance} vs {dir.magnitude}", hit.collider);
-					}
-				}
-				else
-				{
-					//Debug.Log($"Interacting with {itemInQuestion.name}", itemInQuestion);
-					itemInQuestion.Interact(eventArgs);
-				}
+				interactable.Interact(eventArgs);
 			}
 			else
 			{
-				//Debug.Log("Nothing to interact with.", this);
 				onNothingToInteract.Invoke();
 			}
 		}

@@ -106,10 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 7479
+    m_Bits: 3383
   handLocation: {fileID: 408795825}
-  lerpSpeed: 5
-  slerpSpeed: 5
   m_onNothingToInteract:
     m_PersistentCalls:
       m_Calls: []
