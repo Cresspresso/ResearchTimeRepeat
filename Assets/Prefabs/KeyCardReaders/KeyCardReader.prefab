@@ -136,6 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cc8f038bce8764ca23e5ba01df0387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverDescription: Use Key Card
+  hoverNotInteractableDescription: Find a Key Card
+  showHoverInfo: 1
 --- !u!1001 &4832611651569727808
 PrefabInstance:
   m_ObjectHideFlags: 0
