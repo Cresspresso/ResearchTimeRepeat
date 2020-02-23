@@ -17,6 +17,10 @@ public class NotInteractableReason
 [DisallowMultipleComponent]
 public class Interactable : MonoBehaviour
 {
+	[SerializeField]
+	private Transform m_location;
+	public Transform location => m_location ? m_location : transform;
+
 	public bool showHoverInfo = true;
 	public string hoverDescription = "Interact";
 	public string hoverNotInteractableDescription = "Can Not Interact";
