@@ -30,8 +30,11 @@ public class VictoryKcr : MonoBehaviour
 
 	private void OnInteract(InteractEventArgs eventArgs)
 	{
-		FindObjectOfType<AudioManager>().PlaySound("kcrBeep");
 		groundhogDay.enabled = false;
-		ps.Play();
+
+		if (ps) { ps.Play(); }
+
+		var am = FindObjectOfType<AudioManager>();
+		if (am) { am.PlaySound("kcrBeep"); }
 	}
 }
