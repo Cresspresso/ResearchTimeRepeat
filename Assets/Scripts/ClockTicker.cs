@@ -6,10 +6,22 @@ using UnityEngine.UI;
 public class ClockTicker : MonoBehaviour
 {
 	public GroundhogDay groundhogDay;
-	public Text clockText;
+	public Text secondsText;
+	public Text decimalText;
+
+	private void Awake()
+	{
+		if (!groundhogDay)
+		{
+			groundhogDay = FindObjectOfType<GroundhogDay>();
+		}
+		Debug.Assert(groundhogDay, "groundhogDay is null", this);
+	}
 
 	private void Update()
 	{
-		 clockText.text = string.Format("{0:00.00}", groundhogDay.remainingTime);
+		float t = groundhogDay.remainingTime;
+		secondsText.text = string.Format("{0:00}", System.Math.Truncate(t));
+		decimalText.text = string.Format("{0:00}", (t % 1) * 100);
 	}
 }

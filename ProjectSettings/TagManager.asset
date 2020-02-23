@@ -15,13 +15,13 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - KeyCard
+  - Interactables
   - Ground
-  - SwipePanel
+  - KeyCardReader
   - PlayerHand
-  - KeyCardBeingHeld
-  - 
-  - 
+  - ItemsBeingHeld
+  - Player
+  - NotHandObstacle
   - 
   - 
   - 
