@@ -19,6 +19,13 @@ public class MainMenuPlayButton : MonoBehaviour
 		}
 	}
 
+	[SerializeField]
+	private Animator m_anim;
+	public Animator anim => m_anim;
+
+	public float delay = 5.0f;
+	public bool isPlaying = false;
+
 	private void Awake()
 	{
 		button.onClick.AddListener(OnClicked);
@@ -31,6 +38,24 @@ public class MainMenuPlayButton : MonoBehaviour
 
 	private void OnClicked()
 	{
-		SceneManager.LoadScene(1);
+		isPlaying = true;
+		PlayAnimations();
+	}
+
+	private void Update()
+	{
+		if (isPlaying)
+		{
+			delay -= Time.deltaTime;
+			if (delay <= 0.0f)
+			{
+				SceneManager.LoadScene(1);
+			}
+		}
+	}
+
+	private void PlayAnimations()
+	{
+		anim.enabled = true;
 	}
 }
