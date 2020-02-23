@@ -25,7 +25,7 @@ public class PlayerHand : MonoBehaviour
 	{
 		// if no obstacles in the way
 		var cameraTransform = this.cameraTransform;
-		var dir = interactable.transform.position - cameraTransform.position;
+		var dir = interactable.location.position - cameraTransform.position;
 		if (Physics.Raycast(
 			new Ray(cameraTransform.position, dir),
 			out var hit,
@@ -91,10 +91,10 @@ public class PlayerHand : MonoBehaviour
 		return
 			from pair in availableTouches
 			let collider = pair.Key
-			where collider && collider.transform
+			where collider
 			let item = collider.GetComponentInParent<Interactable>()
 			where item
-			let p = collider.transform.position - cameraTransform.position
+			let p = item.location.position - cameraTransform.position
 			let d = Vector3.Distance(p, Vector3.Project(p, cameraTransform.forward))
 			orderby d
 			select item;
