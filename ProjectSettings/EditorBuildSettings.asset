@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/development/Angelika.unity
-    guid: 1e6b59c2c6815a843be3c81a6a43a062
-  - enabled: 1
     path: Assets/Scenes/development/Jordyn 1.unity
     guid: d46eb132827f37242ace05730e3a25fa
   m_configObjects: {}
