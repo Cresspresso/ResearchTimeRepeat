@@ -1,18 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!82 &4357577516652270884
+--- !u!82 &1439699333
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5066914821543485245}
+  m_GameObject: {fileID: 988168751041393251}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f0586c7d613f9d84e893efd882ad8116, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -96,83 +96,78 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &3850754948984571444
+--- !u!1001 &5469588836897287518
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 5066914821543485245, guid: e31a0f6a6f82d5d47867e514422bb7b3,
+        type: 3}
+      propertyPath: m_Name
+      value: Intercom with Sound Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.10669954
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.41635525
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.07518117
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.899784
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -14.751
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -49.306004
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+    - target: {fileID: 8073289436153261358, guid: e31a0f6a6f82d5d47867e514422bb7b3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ac639d09a3c4bb24692696eaf8cacae5, type: 2}
-    - target: {fileID: -927199367670048503, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
-        type: 3}
-      propertyPath: m_Name
-      value: Intercom Variant
+      value: -2.753
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 911b8f8b9ad5a8b45aaf3f313f348026, type: 3}
---- !u!1 &5066914821543485245 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: e31a0f6a6f82d5d47867e514422bb7b3, type: 3}
+--- !u!1 &988168751041393251 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 911b8f8b9ad5a8b45aaf3f313f348026,
+  m_CorrespondingSourceObject: {fileID: 5066914821543485245, guid: e31a0f6a6f82d5d47867e514422bb7b3,
     type: 3}
-  m_PrefabInstance: {fileID: 3850754948984571444}
+  m_PrefabInstance: {fileID: 5469588836897287518}
   m_PrefabAsset: {fileID: 0}
