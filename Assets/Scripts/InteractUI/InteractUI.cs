@@ -76,7 +76,7 @@ public class InteractUI : MonoBehaviour
 
 			// update position
 
-			var worldPos = interactable.transform.position;
+			var worldPos = interactable.location.position;
 			var screenPos = Camera.main.WorldToViewportPoint(worldPos) * canvasScaler.referenceResolution;
 			transform.anchoredPosition = screenPos;
 		}
