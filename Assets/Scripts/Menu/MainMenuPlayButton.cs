@@ -23,6 +23,8 @@ public class MainMenuPlayButton : MonoBehaviour
 	private Animator m_anim;
 	public Animator anim => m_anim;
 
+	public TownNuke nuke;
+
 	public float delay = 5.0f;
 	public bool isPlaying = false;
 
@@ -56,6 +58,12 @@ public class MainMenuPlayButton : MonoBehaviour
 
 	private void PlayAnimations()
 	{
-		anim.enabled = true;
+		if (anim) { anim.enabled = true; }
+
+		if (!nuke) { nuke = FindObjectOfType<TownNuke>(); }
+		if (nuke)
+		{
+			nuke.Play();
+		}
 	}
 }
