@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lit_Buttons_2
-    second: {fileID: 2100000, guid: 04b89f473955b2e41b85f4887a71b1ca, type: 2}
+    second: {fileID: 2100000, guid: 48941bf0f41e2774c905b68eb1f0c500, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
