@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // sibling to `PlayerHand`
-public class KeyCardHoldInfo : MonoBehaviour
+public class PlayerHoldLocation : MonoBehaviour
 {
 	public Transform location;
 }
