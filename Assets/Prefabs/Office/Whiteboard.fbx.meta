@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 968c7e01ddd26de4e90e8970bfd96ebe
+guid: 66012becea95e3a4b869f1dbd64f967b
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Lit_Screens_2
-    second: {fileID: 2100000, guid: 04b89f473955b2e41b85f4887a71b1ca, type: 2}
+      name: Plastic
+    second: {fileID: 2100000, guid: 1a23b9b8d27787e479f9def134b1fccc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: 1e0c160d1857a9d41ba69baae1d3f8bb, type: 2}
+      name: Tin
+    second: {fileID: 2100000, guid: eeecad07cabfdfe48adcc9cacfa5ebb7, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
