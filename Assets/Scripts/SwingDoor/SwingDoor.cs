@@ -13,12 +13,15 @@ public class SwingDoor : Interactable
 		{
 			anim.SetBool("isOpen", value);
 			this.hoverDescription = value ? "Close" : "Open";
+
+			var am = FindObjectOfType<AudioManager>();
+			if (am) { am.PlaySound("doorOpen"); }
 		}
 	}
 
 	public bool openOnAwake = false;
 
-	protected void Awake()
+	protected void Start()
 	{
 		isOpen = openOnAwake;
 	}
