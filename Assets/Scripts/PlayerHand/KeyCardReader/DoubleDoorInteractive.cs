@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoubleDoorKcr : MonoBehaviour
+// sibling to `Interactable`
+public class DoubleDoorInteractive : MonoBehaviour
 {
-	private KeyCardReader m_interactive;
-	public KeyCardReader interactive {
+	private Interactable m_interactive;
+	public Interactable interactive {
 		get
 		{
 			if (!m_interactive)
 			{
-				m_interactive = GetComponent<KeyCardReader>();
+				m_interactive = GetComponent<Interactable>();
 			}
 			return m_interactive;
 		}
 	}
-	public Animator[] anims = new Animator[1];
+
+	public DoubleDoor doubleDoor;
+
 	public bool hasBeenInteracted = false;
 
 	public string descriptionWhenOpened = "Door has been opened";
@@ -38,19 +41,6 @@ public class DoubleDoorKcr : MonoBehaviour
 
 		interactive.hoverDescription = descriptionWhenOpened;
 
-		if (anims != null)
-		{
-			foreach (var anim in anims)
-			{
-				if (anim)
-				{
-					anim.SetBool("doorOpen", true);
-				}
-				else
-				{
-					Debug.LogError("animator is null", this);
-				}
-			}
-		}
+		doubleDoor.OpenDoors();
 	}
 }

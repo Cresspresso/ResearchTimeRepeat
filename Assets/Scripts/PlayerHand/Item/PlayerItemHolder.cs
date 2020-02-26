@@ -5,6 +5,18 @@ using UnityEngine;
 // sibling to `PlayerHand`
 public class PlayerItemHolder : MonoBehaviour
 {
+	private PlayerHand m_hand;
+	public PlayerHand hand {
+		get
+		{
+			if (!m_hand)
+			{
+				m_hand = GetComponent<PlayerHand>();
+			}
+			return m_hand;
+		}
+	}
+
 	public Item itemBeingHeld { get; private set; } = null;
 
 	private void Update()

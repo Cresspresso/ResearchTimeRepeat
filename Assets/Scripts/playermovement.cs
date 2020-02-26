@@ -26,36 +26,9 @@ public class playermovement : MonoBehaviour
 		controller = GetComponent<CharacterController>();
 	}
 
-#if WORLDS
-	void MoveBetweenWorlds(Transform from, Transform to)
-	{
-        controller.transform.position = to.TransformPoint(
-            from.InverseTransformPoint(
-                controller.transform.position));
-    }
-#endif // WORLDS
-
 	// Update is called once per frame
 	void Update()
 	{
-#if WORLDS
-        if (Input.GetButtonDown("Fire2") && player.isGameControlEnabled)
-		{
-            controller.enabled = false;
-			if (isInWorldB)
-            {
-                MoveBetweenWorlds(worldB, worldA);
-                isInWorldB = false;
-            }
-			else
-            {
-                MoveBetweenWorlds(worldA, worldB);
-                isInWorldB = true;
-            }
-            controller.enabled = true;
-        }
-#endif // WORLDS
-
 		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0.0f)
