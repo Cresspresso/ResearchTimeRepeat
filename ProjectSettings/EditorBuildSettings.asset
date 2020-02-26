@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/development/Jordyn 1.unity
     guid: d46eb132827f37242ace05730e3a25fa
+  - enabled: 1
+    path: Assets/Scenes/development/EscapeVideoScene.unity
+    guid: 1972af3574010324b9c8d755e44b653f
   m_configObjects: {}
