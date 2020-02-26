@@ -12,7 +12,11 @@ public class SwingDoor : Interactable
 		set
 		{
 			anim.SetBool("isOpen", value);
-			this.hoverDescription = value ? "Close" : "Open";
+			this.hoverDescription = isLocked
+				? "Locked"
+				: (value
+				? "Close"
+				: "Open");
 
 			var am = FindObjectOfType<AudioManager>();
 			if (am) { am.PlaySound("doorOpen"); }
@@ -20,6 +24,7 @@ public class SwingDoor : Interactable
 	}
 
 	public bool openOnAwake = false;
+	public bool isLocked = false;
 
 	protected void Start()
 	{
@@ -28,6 +33,9 @@ public class SwingDoor : Interactable
 
 	protected override void OnInteract(InteractEventArgs eventArgs)
 	{
-		isOpen = !isOpen;
+		if (!isLocked)
+		{
+			isOpen = !isOpen;
+		}
 	}
 }

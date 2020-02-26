@@ -84,10 +84,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_location: {fileID: 5255054013845154120}
   showHoverInfo: 1
-  hoverDescription: Interact
-  hoverNotInteractableDescription: Can Not Interact
+  hoverDescription: (scripted)
+  hoverNotInteractableDescription: Not Interactable
   anim: {fileID: 4433766716108989571}
   openOnAwake: 0
+  isLocked: 0
 --- !u!114 &2315859910019260012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +257,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48ee74e6adbe55a458d56e6898e44cfd, type: 2}
+  - {fileID: 2100000, guid: eeecad07cabfdfe48adcc9cacfa5ebb7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
