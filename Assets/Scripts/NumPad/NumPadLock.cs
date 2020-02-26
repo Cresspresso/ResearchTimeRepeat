@@ -41,13 +41,20 @@ public class NumPadLock : MonoBehaviour
 
 	private void OnSubmit(string code)
 	{
+
 		if (code == passcode)
 		{
 			onCorrectSubmitted.Invoke();
+
+			var am = FindObjectOfType<AudioManager>();
+			if (am) { am.PlaySound("beepCorrect"); }
 		}
 		else
 		{
 			onIncorrectSubmitted.Invoke();
+
+			var am = FindObjectOfType<AudioManager>();
+			if (am) { am.PlaySound("beepWrong"); }
 		}
 	}
 }

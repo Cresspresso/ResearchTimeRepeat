@@ -15,6 +15,9 @@ public class DoubleDoor : MonoBehaviour
 				if (anim)
 				{
 					anim.SetBool("doorOpen", true);
+
+					var am = FindObjectOfType<AudioManager>();
+					if (am) { am.PlaySound("labdoorOpen"); }
 				}
 				else
 				{

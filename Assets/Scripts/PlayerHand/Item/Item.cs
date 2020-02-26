@@ -50,6 +50,9 @@ public class Item : Interactable
 		try
 		{
 			holder.PickUpItem(this);
+
+			var am = FindObjectOfType<AudioManager>();
+			if (am) { am.PlaySound("cardPickup"); }
 		}
 		catch
 		{
@@ -71,6 +74,9 @@ public class Item : Interactable
 
 	public void InvokeDropped(ItemEventArgs eventArgs)
 	{
+		var am = FindObjectOfType<AudioManager>();
+		if (am) { am.PlaySound("cardDrop"); }
+
 		holder = null;
 		hoverNotInteractableDescription = hoverOldDescription;
 		OnDropped(eventArgs);
