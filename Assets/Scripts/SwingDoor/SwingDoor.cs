@@ -7,32 +7,65 @@ public class SwingDoor : Interactable
 {
 	public Animator anim;
 
+	private bool m_isOpen;
 	public bool isOpen {
-		get => anim.GetBool("isOpen");
+		get => m_isOpen;
 		set
 		{
+			m_isOpen = value;
+
 			anim.SetBool("isOpen", value);
-			this.hoverDescription = isLocked
-				? "Locked"
-				: (value
-				? "Close"
-				: "Open");
+
+			isHoverInfoDirty = true;
 
 			var am = FindObjectOfType<AudioManager>();
 			if (am) { am.PlaySound("doorOpen"); }
 		}
 	}
 
+	public void UpdateHoverInfo()
+	{
+		this.hoverDescription = hasBeenInteracted
+			? (isLocked
+				? "Locked"
+				: (isOpen
+					? "Close"
+					: "Open"))
+			: "Try Door";
+	}
+
 	public bool openOnAwake = false;
 	public bool isLocked = false;
 
-	protected void Start()
+	private bool m_hasBeenInteracted = false;
+	public bool hasBeenInteracted {
+		get => m_hasBeenInteracted;
+		private set
+		{
+			m_hasBeenInteracted = value;
+			isHoverInfoDirty = true;
+		}
+	}
+
+	private bool isHoverInfoDirty = false;
+
+	private void Awake()
 	{
 		isOpen = openOnAwake;
 	}
 
+	private void LateUpdate()
+	{
+		if (isHoverInfoDirty)
+		{
+			UpdateHoverInfo();
+			isHoverInfoDirty = false;
+		}
+	}
+
 	protected override void OnInteract(InteractEventArgs eventArgs)
 	{
+		hasBeenInteracted = true;
 		if (!isLocked)
 		{
 			isOpen = !isOpen;
