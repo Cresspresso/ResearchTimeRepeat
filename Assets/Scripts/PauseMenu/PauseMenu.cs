@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 	private bool GetPauseButtonDown()
 	{
 #if UNITY_EDITOR
-		return Input.GetKeyDown(KeyCode.BackQuote) || Input.GetKeyDown(KeyCode.Tilde);
+		return Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.BackQuote) || Input.GetKeyDown(KeyCode.Tilde);
 #else
 		return Input.GetKeyDown(KeyCode.Escape);
 #endif
