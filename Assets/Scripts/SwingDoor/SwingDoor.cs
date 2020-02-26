@@ -18,8 +18,21 @@ public class SwingDoor : Interactable
 
 			isHoverInfoDirty = true;
 
-			var am = FindObjectOfType<AudioManager>();
-			if (am) { am.PlaySound("doorOpen"); }
+			if (hasBeenInteracted)
+			{
+				var am = FindObjectOfType<AudioManager>();
+				if (am)
+				{
+					if (value)
+					{
+						am.PlaySound("doorOpen");
+					}
+					else
+					{
+						am.PlaySound("doorClose");
+					}
+				}
+			}
 		}
 	}
 
@@ -66,7 +79,14 @@ public class SwingDoor : Interactable
 	protected override void OnInteract(InteractEventArgs eventArgs)
 	{
 		hasBeenInteracted = true;
-		if (!isLocked)
+		if (isLocked)
+		{
+			anim.SetTrigger("TriedToOpenLocked");
+
+			var am = FindObjectOfType<AudioManager>();
+			if (am) { am.PlaySound("doorLocked"); }
+		}
+		else
 		{
 			isOpen = !isOpen;
 		}

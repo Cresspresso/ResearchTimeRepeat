@@ -43,4 +43,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f49c6be02b49b14f97cf2615b98f13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: kcrBeep
+    clip: {fileID: 8300000, guid: f717e55b06f88604796ad3fb7454cbdc, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: heartbeat
+    clip: {fileID: 8300000, guid: 0e672e2fefa39f940bb79a562eb0e90d, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: doorOpen
+    clip: {fileID: 8300000, guid: a46eb35e42716df41905ffd2ffb992ae, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: buttonClick
+    clip: {fileID: 8300000, guid: 34f23164729191d44ac7643c1957cf34, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: beepCorrect
+    clip: {fileID: 8300000, guid: f717e55b06f88604796ad3fb7454cbdc, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: beepWrong
+    clip: {fileID: 8300000, guid: 9de1de19f5b472e4ab7be7614ba3cdba, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: labdoorOpen
+    clip: {fileID: 8300000, guid: 9a714cbe312e4da41bf05604ae8336ea, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: cardDrop
+    clip: {fileID: 8300000, guid: e3944b000cd0013409044045e98cea07, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: cardPickup
+    clip: {fileID: 8300000, guid: 7e77602c3f7b8364c9b49acc28a9f7e4, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: doorLocked
+    clip: {fileID: 8300000, guid: a46eb35e42716df41905ffd2ffb992ae, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
