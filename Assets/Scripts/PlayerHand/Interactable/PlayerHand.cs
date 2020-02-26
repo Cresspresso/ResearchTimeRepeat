@@ -7,6 +7,15 @@ using System.Linq;
 // sibling to trigger colliders
 public class PlayerHand : MonoBehaviour
 {
+	private PlayerController m_player;
+	public PlayerController player {
+		get
+		{
+			if (!m_player) { m_player = GetComponentInParent<PlayerController>(); }
+			return m_player;
+		}
+	}
+
 	public LayerMask obstacleMask = ~0;
 	public Transform handLocation;
 
@@ -116,7 +125,7 @@ public class PlayerHand : MonoBehaviour
 			return sum;
 		}), this);*/
 
-		if (Input.GetButtonDown("Fire1"))
+		if (player.isGameControlEnabled && Input.GetButtonDown("Fire1"))
 		{
 			var interactable = GetClosestInteractable();
 			if (interactable)
