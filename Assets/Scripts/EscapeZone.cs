@@ -20,6 +20,7 @@ public class EscapeZone : MonoBehaviour
 		{
 			visuals.SetActive(true);
 			anim.enabled = true;
+			FindObjectOfType<PlayerController>().isGameControlEnabled = false;
 		}
 	}
 
@@ -30,12 +31,7 @@ public class EscapeZone : MonoBehaviour
 			var info = anim.GetAnimatorTransitionInfo(0);
 			if (info.IsUserName("CustomTransition"))
 			{
-				Debug.Log("exit", this);
 				SceneManager.LoadScene(2);// "EscapeVideoScene"
-			}
-			else
-			{
-				Debug.Log("not exit", this);
 			}
 		}
 	}
