@@ -7,13 +7,58 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Lit_Buttons
+    second: {fileID: 2100000, guid: f99bfb8a8ed043a4aab418ba48fca417, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lit_Buttons_2
+    second: {fileID: 2100000, guid: ecd54f2d82f47b548bb96d17bbec940d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lit_Screens
+    second: {fileID: 2100000, guid: f99bfb8a8ed043a4aab418ba48fca417, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Lit_Screens_2
     second: {fileID: 2100000, guid: 04b89f473955b2e41b85f4887a71b1ca, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MASSIVE_BUTTON_THATS_LIT
+    second: {fileID: 2100000, guid: ecd54f2d82f47b548bb96d17bbec940d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Metal
+    second: {fileID: 2100000, guid: 1a23b9b8d27787e479f9def134b1fccc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_Panels
+    second: {fileID: 2100000, guid: 308f3ec34607a6040881f87454a08539, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_Pipes
+    second: {fileID: 2100000, guid: 1a23b9b8d27787e479f9def134b1fccc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_Top
     second: {fileID: 2100000, guid: 1e0c160d1857a9d41ba69baae1d3f8bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PLastic_Buttons
+    second: {fileID: 2100000, guid: 48ee74e6adbe55a458d56e6898e44cfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic
+    second: {fileID: 2100000, guid: 308f3ec34607a6040881f87454a08539, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
