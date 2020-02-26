@@ -48,6 +48,8 @@ public class PauseMenu : MonoBehaviour
 
 		Time.timeScale = 0.0f;
 
+		FindObjectOfType<PlayerController>().isGameControlEnabled = false;
+
 		visuals.SetActive(true);
 
 		if (volume.profile.TryGet(out GrayScale grayScale))
@@ -64,6 +66,8 @@ public class PauseMenu : MonoBehaviour
 		Cursor.lockState = CursorLockMode.Locked;
 
 		Time.timeScale = 1.0f;
+
+		FindObjectOfType<PlayerController>().isGameControlEnabled = true;
 
 		visuals.SetActive(false);
 
