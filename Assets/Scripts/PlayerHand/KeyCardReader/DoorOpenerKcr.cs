@@ -23,5 +23,8 @@ public class DoorOpenerKcr : MonoBehaviour
 	private void OnInteract(InteractEventArgs eventArgs)
 	{
 		anim.SetBool("doorOpen", true);
+
+		var am = FindObjectOfType<AudioManager>();
+		if (am) { am.PlaySound("labdoorOpen"); }
 	}
 }

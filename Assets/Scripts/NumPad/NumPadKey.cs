@@ -46,5 +46,8 @@ public sealed class NumPadKey : Interactable
 	protected override void OnInteract(InteractEventArgs eventArgs)
 	{
 		pad.OnNumPadKeyPressed(type);
+
+		var am = FindObjectOfType<AudioManager>();
+		if (am) { am.PlaySound("buttonClick"); }
 	}
 }
