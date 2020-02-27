@@ -39,6 +39,14 @@ public class PauseMenu : MonoBehaviour
 		}
 	}
 
+	private void OnDestroy()
+	{
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.None;
+
+		Time.timeScale = 1.0f;
+	}
+
 	public void OpenPauseMenu()
 	{
 		isOpen = true;
