@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/development/EscapeVideoScene.unity
     guid: 1972af3574010324b9c8d755e44b653f
+  - enabled: 1
+    path: Assets/Scenes/development/VictoryVideoScene.unity
+    guid: b9ae133cb563abc4ebc1cb181faee729
   m_configObjects: {}

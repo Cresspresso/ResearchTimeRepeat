@@ -5,11 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ControlPanelButton : Interactable
 {
-	private bool m_isInteractable = false;
-	public bool isInteractable {
-		get => m_isInteractable;
-		set { m_isInteractable = value; }
-	}
+	public bool isInteractable { get; set; } = false;
 
 	private void Awake()
 	{
@@ -18,7 +14,7 @@ public class ControlPanelButton : Interactable
 
 	public override NotInteractableReason GetNotInteractableReason(InteractEventArgs eventArgs)
 	{
-		if (!m_isInteractable) { return new NotInteractableReason("button disabled"); }
+		if (!isInteractable) { return new NotInteractableReason("button disabled"); }
 		return base.GetNotInteractableReason(eventArgs);
 	}
 
@@ -45,7 +41,7 @@ public class ControlPanelButton : Interactable
 
 	private void Update()
 	{
-		int sceneIndex = 2;// "EscapeVideoScene"
+		int sceneIndex = 3; // "VictoryVideoScene"
 		if (anim)
 		{
 			if (anim.enabled && anim.IsInTransition(0))
