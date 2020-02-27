@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 3390430442503630135}
   - component: {fileID: 5270522028541271894}
   - component: {fileID: 760269791637774827}
+  - component: {fileID: 8874724984298355313}
   m_Layer: 10
   m_Name: WinCanvas
   m_TagString: Untagged
@@ -175,6 +176,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!95 &8874724984298355313
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842227526079223816}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf3dce178a8c7a14db3fa89466be419c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2851470976182592992
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +251,7 @@ GameObject:
   - component: {fileID: 3698051110567490731}
   - component: {fileID: 3707298492802717439}
   - component: {fileID: 7549826679833695874}
+  - component: {fileID: 2045723697241565471}
   m_Layer: 10
   m_Name: Text You Aborted Launch
   m_TagString: Untagged
@@ -312,6 +333,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!225 &2045723697241565471
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3236928836008904096}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3345401749380572813
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +468,7 @@ MonoBehaviour:
   showHoverInfo: 1
   hoverDescription: Abort Missile Launch
   hoverNotInteractableDescription: Abort Missile Launch (Locked by Key Pad)
+  anim: {fileID: 8874724984298355313}
   visuals: {fileID: 2842227526079223816}
 --- !u!54 &1150574908760637358
 Rigidbody:
@@ -625,6 +659,7 @@ GameObject:
   - component: {fileID: 2833175051790670804}
   - component: {fileID: 5330236726778616701}
   - component: {fileID: 4661612260138555807}
+  - component: {fileID: 1372857384973483390}
   m_Layer: 10
   m_Name: Text Congrats
   m_TagString: Untagged
@@ -706,6 +741,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.09638786, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!225 &1372857384973483390
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346828675533482975}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8409179880659197411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,27 +1519,27 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.11
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -6.344
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -21.33
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
@@ -1502,7 +1549,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
@@ -1517,12 +1564,22 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.009999999
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.009999999
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 968c7e01ddd26de4e90e8970bfd96ebe,
         type: 3}

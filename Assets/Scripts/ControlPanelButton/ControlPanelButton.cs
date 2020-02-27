@@ -35,14 +35,13 @@ public class ControlPanelButton : Interactable
 
 
 
-	private Animator anim;
+	public Animator anim;
 	public GameObject visuals;
 
 	public bool isAborting => anim ? anim.enabled : visuals.activeSelf;
 
 	private void Start()
 	{
-		anim = GetComponent<Animator>();
 		visuals.SetActive(false);
 	}
 
