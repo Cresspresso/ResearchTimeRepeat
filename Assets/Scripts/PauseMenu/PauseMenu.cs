@@ -26,7 +26,8 @@ public class PauseMenu : MonoBehaviour
 
 	private void Update()
 	{
-		if (GetPauseButtonDown())
+		if (GroundhogDay.instance.isGameEnding == false
+			&& GetPauseButtonDown())
 		{
 			if (isOpen)
 			{
@@ -37,6 +38,14 @@ public class PauseMenu : MonoBehaviour
 				OpenPauseMenu();
 			}
 		}
+	}
+
+	private void OnDestroy()
+	{
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.None;
+
+		Time.timeScale = 1.0f;
 	}
 
 	public void OpenPauseMenu()

@@ -1,42 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
 public class EscapeZone : MonoBehaviour
 {
-	public bool isEscaping { get; private set; } = false;
-	private bool isPlayingVideo = false;
+	private Animator anim;
+	public GameObject visuals;
+	public bool isEscaping => anim.enabled;
 
-	private VideoPlayer videoPlayer;
+	private void Start()
+	{
+		anim = GetComponent<Animator>();
+		visuals.SetActive(false);
+	}
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (isEscaping) { return; }
-
 		if (other.GetComponentInParent<PlayerController>())
 		{
-			isEscaping = true;
-
 			var gd = FindObjectOfType<GroundhogDay>();
-			if (gd)
+			if (!gd.isGameEnding)
 			{
-				gd.enabled = false;
+				gd.isGameEnding = true;
+				visuals.SetActive(true);
+				anim.enabled = true;
+				FindObjectOfType<PlayerController>().isGameControlEnabled = false;
 			}
-
-			// play the video
-			videoPlayer = Camera.main.GetComponent<VideoPlayer>();
-			videoPlayer.started += (sender) => isPlayingVideo = true;
-			videoPlayer.Play();
 		}
 	}
 
 	private void Update()
 	{
-		if (this.isPlayingVideo && !videoPlayer.isPlaying)
+		if (anim.enabled && anim.IsInTransition(0))
 		{
-			SceneManager.LoadScene(0);
+			var info = anim.GetAnimatorTransitionInfo(0);
+			if (info.IsUserName("CustomTransition"))
+			{
+				SceneManager.LoadScene(2);// "EscapeVideoScene"
+			}
 		}
 	}
 }
