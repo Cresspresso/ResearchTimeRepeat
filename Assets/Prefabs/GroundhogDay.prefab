@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 20
   startDelay: 1
-  timeLoopRestartDelay: 1
+  timeLoopRestartDelay: 0.2
+  rewindAnimDuration: 1
+  isGameEnding: 0
 --- !u!114 &7416475751143569988
 MonoBehaviour:
   m_ObjectHideFlags: 0

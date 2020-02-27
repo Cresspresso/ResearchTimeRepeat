@@ -26,7 +26,8 @@ public class PauseMenu : MonoBehaviour
 
 	private void Update()
 	{
-		if (GetPauseButtonDown())
+		if (GroundhogDay.instance.isGameEnding == false
+			&& GetPauseButtonDown())
 		{
 			if (isOpen)
 			{

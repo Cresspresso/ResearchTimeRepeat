@@ -20,10 +20,15 @@ public class ControlPanelButton : Interactable
 
 	protected override void OnInteract(InteractEventArgs eventArgs)
 	{
-		visuals.SetActive(true);
-		if (anim) { anim.enabled = true; }
-		FindObjectOfType<PlayerController>().isGameControlEnabled = false;
-		//base.OnInteract(eventArgs);
+		var gd = FindObjectOfType<GroundhogDay>();
+		if (gd.isGameEnding == false)
+		{
+			gd.isGameEnding = true;
+			visuals.SetActive(true);
+			if (anim) { anim.enabled = true; }
+			FindObjectOfType<PlayerController>().isGameControlEnabled = false;
+			//base.OnInteract(eventArgs);
+		}
 	}
 
 
@@ -32,6 +37,8 @@ public class ControlPanelButton : Interactable
 
 	private Animator anim;
 	public GameObject visuals;
+
+	public bool isAborting => anim ? anim.enabled : visuals.activeSelf;
 
 	private void Start()
 	{

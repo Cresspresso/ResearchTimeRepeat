@@ -7,6 +7,7 @@ public class EscapeZone : MonoBehaviour
 {
 	private Animator anim;
 	public GameObject visuals;
+	public bool isEscaping => anim.enabled;
 
 	private void Start()
 	{
@@ -18,9 +19,14 @@ public class EscapeZone : MonoBehaviour
 	{
 		if (other.GetComponentInParent<PlayerController>())
 		{
-			visuals.SetActive(true);
-			anim.enabled = true;
-			FindObjectOfType<PlayerController>().isGameControlEnabled = false;
+			var gd = FindObjectOfType<GroundhogDay>();
+			if (!gd.isGameEnding)
+			{
+				gd.isGameEnding = true;
+				visuals.SetActive(true);
+				anim.enabled = true;
+				FindObjectOfType<PlayerController>().isGameControlEnabled = false;
+			}
 		}
 	}
 

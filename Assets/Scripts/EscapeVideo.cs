@@ -13,6 +13,15 @@ public class EscapeVideo : MonoBehaviour
 	{
 		videoPlayer = GetComponent<VideoPlayer>();
 		videoPlayer.started += (sender) => doing = true;
+
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
+	}
+
+	private void OnDestroy()
+	{
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.None;
 	}
 
 	private void Update()

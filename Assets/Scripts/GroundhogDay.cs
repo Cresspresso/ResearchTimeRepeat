@@ -10,12 +10,15 @@ public class GroundhogDay : MonoBehaviour
 	public float duration = 20.0f;
 	public float startDelay = 1.0f;
 	public float timeLoopRestartDelay = 1.0f;
+	public float rewindAnimDuration = 1.0f;
 
 
 	// Non Serialized Fields
 
 	private float m_elapsedTime;
-	public bool isLoadingScene { get; private set; }
+	public bool isRewinding { get; private set; } = false;
+	[HideInInspector]
+	public bool isGameEnding = false;
 
 
 	// Properties
@@ -25,6 +28,16 @@ public class GroundhogDay : MonoBehaviour
 	public bool hasEnded => m_elapsedTime >= duration;
 
 
+	private static GroundhogDay m_instance;
+	public static GroundhogDay instance {
+		get
+		{
+			if (!m_instance) { m_instance = FindObjectOfType<GroundhogDay>(); }
+			return m_instance;
+		}
+	}
+
+
 	// Unity Methods
 
 	private void Start()
@@ -32,23 +45,36 @@ public class GroundhogDay : MonoBehaviour
 		m_elapsedTime = -startDelay;
 	}
 
+	private void OnDestroy()
+	{
+		if (instance == this) { m_instance = null; }
+	}
+
 	public void RestartTimeLoop()
 	{
-		isLoadingScene = true;
-		m_elapsedTime = duration + timeLoopRestartDelay;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		Debug.Log("Groundhog Day is Restarting.");
+		if (m_elapsedTime < duration)
+		{
+			m_elapsedTime = duration;
+		}
 	}
 
 	private void LateUpdate()
 	{
-		if (!isLoadingScene && m_elapsedTime >= duration + timeLoopRestartDelay)
+		m_elapsedTime += Time.deltaTime;
+		if (isRewinding)
 		{
-			RestartTimeLoop();
+			if (m_elapsedTime >= duration + timeLoopRestartDelay + rewindAnimDuration)
+			{
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			}
 		}
 		else
 		{
-			m_elapsedTime += Time.deltaTime;
+			if (!isGameEnding && m_elapsedTime >= duration + timeLoopRestartDelay)
+			{
+				isGameEnding = true;
+				isRewinding = true;
+			}
 		}
 	}
 }
